@@ -5,6 +5,7 @@ namespace application\core;
 use application\core\View;
 
 
+
 class Dispatcher{
 
     private $router;
@@ -18,6 +19,11 @@ class Dispatcher{
     }
 
     public function dispatch($request){
-        $this->router->findRoute($request);
+        try{
+            $this->router->findRoute($request);
+
+        }catch(NotFoundException $exception){
+            View::error();
+        }
     }
 }

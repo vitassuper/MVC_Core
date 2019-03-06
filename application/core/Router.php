@@ -26,16 +26,16 @@ class Router {
             if(preg_match($route, $url)){
                 return true;
             }
+            return false;
         }
-        return false;
-    }
+    
 
     public function createRoute(){
         $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
          if(class_exists($path)){
-             $action = $this->params['action'].'Action';
-             if (method_exists($path, $action)){
-                return $this->createRoute($path, $action, $this->params);
+            $action = $this->params['action'].'Action';
+            if (method_exists($path, $action)){
+                return new Route($path, $action, $this->params);
             }
         }
     }
