@@ -8,13 +8,12 @@ class View {
 
     public function __construct($route){
        $this->route=$route;
-       $this->path=$route['controller'].'/'.$route['action'];
-
+       $this->render("Заголовок");
     }
 
     public function render($title, $vars =[]){
         extract($vars);
-        $path ='application/views/' . $this->path .'.php';
+        $path = $this->route.'.php';
         if (file_exists($path)){
             ob_start();
             require $path;
@@ -32,8 +31,4 @@ class View {
         exit;
     }
 
-    public function redirect($url){
-        header('location: '.$url);
-        exit;
-    }
 }

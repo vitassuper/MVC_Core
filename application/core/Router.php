@@ -22,31 +22,26 @@ class Router {
     }
 
     public function isMatch($route, $request){
-        $url = trim($request, '/');
+        $url = trim($request->requestUri(), '/');
             if(preg_match($route, $url)){
                 return true;
             }
             return false;
         }
     
-
     public function createRoute(){
-        $path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
-         if(class_exists($path)){
-            $action = $this->params['action'].'Action';
-            if (method_exists($path, $action)){
-                return new Route($path, $action, $this->params);
-            }
-        }
+        $path = $this->params['controller'];
+        $action = $this->params['action'];
+        return new Route($path, $action, $this->params);
     }
 
     public function findRoute(ServerRequest $request){
-        foreach ($this->routes as $route){
+        foreach ($this->routes as $route => $params){
             if ($this->isMatch($route, $request)) {
+                $this->params=$params;
                 return $this->createRoute();
                 }
             }
+            throw new NotFoundException();
         }
-        throw new NotFoundException();
-    }
 }

@@ -6,13 +6,12 @@ use application\core\View;
 
 abstract class Controller{
 
-    protected $route;
-    public $view;
+    protected $model;
+    protected $view;
 
-    public function __construct($route){
-        $this->route=$route;
-        $this->view = new View($route);
-        $this->model=$this->loadModel($route['controller']);
+    public function __construct(Model $model, View $view){
+       $this->model=$model;
+       $this->view=$view;
     }
 
     public function loadModel($name){
@@ -20,5 +19,10 @@ abstract class Controller{
         if(class_exists($path)){
             return new $path;
         }
+    }
+
+    public function redirect($url){
+        header('location: '.$url);
+        exit;
     }
 }

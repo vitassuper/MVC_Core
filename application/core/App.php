@@ -20,7 +20,7 @@ class App{
         return new Router($routes);
     }
 
-    protected function createDispatcher(RouterInterface $router){
+    protected function createDispatcher(Router $router){
         return new Dispatcher($router);
     }
 
