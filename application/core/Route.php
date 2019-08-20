@@ -3,10 +3,10 @@
 namespace application\core;
 
 class Route{
-    public $controller;
-    public $action;
-    public $model;
-    public $params=[];
+    private $controller;
+    private $action;
+    private $model;
+    private $params=[];
 
     public function __construct($controller, $action, $params=[]){
         $this->controller=$controller;
@@ -14,8 +14,8 @@ class Route{
         $this->params=$params;
         $this->createPathModel();
         $this->createPathController();
-
         $this->createPathView($controller);
+        $this->createAction();
     }
 
     public function createPathController(){
@@ -28,6 +28,10 @@ class Route{
 
     public function createPathModel(){
         $this->model='application\models\\'.ucfirst($this->controller);
+    }
+
+    public function createAction(){
+        $this->action=$this->action.'Action';
     }
 
     public function __get($property){

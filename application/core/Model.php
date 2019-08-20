@@ -6,7 +6,7 @@ use application\lib\Db;
 
 abstract class Model{
 
-    public $db;
+    protected $db;
 
     public function __construct(){
         $this->db = new Db;

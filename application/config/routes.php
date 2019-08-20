@@ -12,6 +12,10 @@ return [
         'action' => 'contact',
     ],
 
+    'forms' =>[
+        'controller'=> 'main',
+        'action' =>'form'
+    ],
 
     'account/login' => [
         'controller' => 'account',

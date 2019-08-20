@@ -8,12 +8,10 @@ use application\core\ServerRequest;
 
 class App{
 
-    private $db=[];
     private $routes=[];
 
     public function __construct($config){
         $this->routes=$config['routes'];
-        $this->db=$config['db'];
     }
 
     protected function createRouter(array $routes){

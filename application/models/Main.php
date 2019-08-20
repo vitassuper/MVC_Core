@@ -10,4 +10,8 @@ class Main extends Model{
        $result = $this->db->row('SELECT title, `text` FROM posts');
        return $result;
     }
+
+    public function createPost($request){
+        $this->db->query("INSERT INTO `posts` (`title`, `text`) VALUES ('$request', '78')");
+    }
 }

@@ -1,4 +1,8 @@
 <p>Главная страница</p>
 
 
-<?php var_dump($news);
+<form action="/forms" method="post">
+<input type="text" name="name" />
+<input type="text" name="title" />
+<input type="submit" value="Отправить">
+</form>

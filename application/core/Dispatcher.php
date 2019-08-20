@@ -27,9 +27,10 @@ class Dispatcher{
            $this->route=$this->router->findRoute($request);
            $controller=$this->route->controller;
            $model=$this->route->model;
+           $action=$this->route->action;
            $view=$this->route->view;
-           new $controller(new $model(), new View($view));
-          
+           $controller = new $controller(new $model(), new View($view), $request);
+           $controller->$action();
         }catch(NotFoundException $exception){
             View::error();
         }

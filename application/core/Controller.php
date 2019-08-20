@@ -8,10 +8,12 @@ abstract class Controller{
 
     protected $model;
     protected $view;
+    protected $request;
 
-    public function __construct(Model $model, View $view){
+    public function __construct(Model $model, View $view, ServerRequest $request){
        $this->model=$model;
        $this->view=$view;
+       $this->request=$request;
     }
 
     public function loadModel($name){

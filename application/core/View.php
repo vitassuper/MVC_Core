@@ -8,7 +8,6 @@ class View {
 
     public function __construct($route){
        $this->route=$route;
-       $this->render("Заголовок");
     }
 
     public function render($title, $vars =[]){
