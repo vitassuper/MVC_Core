@@ -4,22 +4,10 @@ namespace application\lib\Validator\Rules\Core;
 
 use application\lib\Validator\Rules\AbstractRule;
 
-/**
- * Date validation rule.
- *
- * @package Kontrolio\Rules\Core
- */
 class Date extends AbstractRule
 {
     const PATTERN = '/^(\d{4})-(\d{2})-(\d{2})$/';
 
-    /**
-     * Validates input.
-     *
-     * @param mixed $input
-     *
-     * @return bool
-     */
     public function isValid($input = null)
     {
         if ($input === null || $input === '') {

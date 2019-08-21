@@ -6,43 +6,15 @@ use InvalidArgumentException;
 use LogicException;
 use application\lib\Validator\Rules\AbstractRule;
 
-/**
- * Length validation rule.
- *
- * @package Kontrolio\Rules\Core
- */
 class Length extends AbstractRule
 {
-    /**
-     * Minimum length.
-     *
-     * @var int
-     */
+  
     private $min;
 
-    /**
-     * Maximum length.
-     *
-     * @var int
-     */
     private $max;
 
-    /**
-     * Charset.
-     *
-     * @var string
-     */
     private $charset;
 
-    /**
-     * Length validation rule constructor.
-     *
-     * @param int $min
-     * @param int $max
-     * @param string $charset
-     * @throws InvalidArgumentException
-     * @throws LogicException
-     */
     public function __construct(
         $min = null,
         $max = null,
@@ -65,13 +37,6 @@ class Length extends AbstractRule
         $this->charset = $charset;
     }
 
-    /**
-     * Validates input.
-     *
-     * @param mixed $input
-     *
-     * @return bool
-     */
     public function isValid($input = null)
     {
         if ($input === null || $input === '') {

@@ -4,18 +4,8 @@ namespace application\lib\Validator\Rules\Core;
 
 use application\lib\Validator\Rules\AbstractRule;
 
-/**
- * URL validation rule.
- *
- * @package Kontrolio\Rules\Core
- */
 class Url extends AbstractRule
 {
-    /**
-     * Url validation pattern.
-     *
-     * @see https://github.com/symfony/symfony/blob/master/src/Symfony/Component/Validator/Constraints/UrlValidator.php
-     */
     const PATTERN = '~^
             (%s)://                                 # protocol
             (([\pL\pN\-]+:)?([\pL\pN\-]+)@)?          # basic auth
@@ -32,37 +22,15 @@ class Url extends AbstractRule
             (/?|/\S+|\?\S*|\#\S*)                   # a /, nothing, a / with something, a query or a fragment
         $~ixu';
 
-    /**
-     * Checked protocols.
-     *
-     * @var array
-     */
     private $protocols = ['http', 'https'];
 
-    /**
-     * Indicates whether DNS will be checked.
-     *
-     * @var bool
-     */
     private $checkDNS;
 
-    /**
-     * Url constructor.
-     *
-     * @param bool $checkDNS
-     */
     public function __construct($checkDNS = false)
     {
         $this->checkDNS = $checkDNS;
     }
 
-    /**
-     * Validates input.
-     *
-     * @param mixed $input
-     *
-     * @return bool
-     */
     public function isValid($input = null)
     {
         if ($input === null || $input === '') {
