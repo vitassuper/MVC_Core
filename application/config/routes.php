@@ -27,11 +27,9 @@ return [
         'action' => 'register',
     ],
 
-    'posts/show' => [
-        'controller' => 'posts',
-        'action' => 'show',
+    'account/xuy' => [
+        'controller' => 'xuy',
+        'action' => 'register',
     ],
-
-   
 
 ];

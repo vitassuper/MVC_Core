@@ -29,4 +29,8 @@ class MainController extends Controller
         var_dump($validator->getErrors());
         //$this->redirect("http://core/");
     }
+
+    public function contactAction(){
+        
+    }
 }
